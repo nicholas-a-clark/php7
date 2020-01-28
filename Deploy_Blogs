@@ -1,0 +1,4 @@
+if [ -f "${BLOG_PATH}/content/using_php7" ] ; then
+  echo registering $BLOG_HOST_NAME CNAME with infoblox...
+  curl -v -u "$INFOBLOX_USER":"$INFOBLOX_PW"  -XPOST -d "{\"name\":\"${BLOG_HOST_NAME}\",\"canonical\":\"wordpress-qa-php7.boston.com\"}"   -H 'content-type: application/json' 'https://cronus.globe.com/wapi/v2.9/record:cname?_return_fields%2B=name,canonical&_return_as_object=1'
+fi
